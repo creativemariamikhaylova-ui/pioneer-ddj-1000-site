@@ -27,17 +27,19 @@
    - `3.png` - для страницы впечатлений
 3. Откройте `index.html` в браузере
 
-pioneer-ddj-1000-site/
-│
+'''
+
+project/
 ├── index.html
 ├── style.css
 ├── script.js
 └── images/
-    ├── 1.png
-    ├── 2.png
-    ├── 3.png
-    ├── 5.png
-    └── 6.png
+├── 1.png
+├── 2.png
+├── 3.png
+├── 5.png
+└── 6.png
+'''
 
 ## Автор
 
