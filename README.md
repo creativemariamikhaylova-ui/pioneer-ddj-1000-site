@@ -1,6 +1,7 @@
 # Pioneer DDJ-1000
 
 Сайт-обзор контроллера Pioneer DDJ-1000
+
 Ссылка на сайт: https://pioneer-ddj-1000-site.vercel.app/
 
 ## Функции
