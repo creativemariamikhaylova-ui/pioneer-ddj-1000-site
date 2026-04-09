@@ -27,6 +27,10 @@
             e.preventDefault();
             var pageId = this.getAttribute('data-page');
             if(pageId && pages[pageId]) showPage(pageId);
+            var navMenu = document.querySelector('.nav-menu');
+            if(window.innerWidth <= 768 && navMenu) {
+                navMenu.classList.remove('active');
+            }
         });
     }
     
@@ -137,7 +141,8 @@
     
     function updateChart() {
         var total = votes.excellent + votes.good + votes.average + votes.bad;
-        document.getElementById('voteStats').innerText = 'Всего голосов: ' + total;
+        var voteStats = document.getElementById('voteStats');
+        if(voteStats) voteStats.innerText = 'Всего голосов: ' + total;
         var bars = {
             excellent: document.getElementById('bar-excellent'),
             good: document.getElementById('bar-good'),
@@ -146,8 +151,10 @@
         };
         if(total === 0) {
             for(var key in bars) {
-                bars[key].style.width = '0%';
-                bars[key].innerText = '0%';
+                if(bars[key]) {
+                    bars[key].style.width = '0%';
+                    bars[key].innerText = '0%';
+                }
             }
             return;
         }
@@ -158,8 +165,10 @@
             bad: (votes.bad / total * 100).toFixed(1)
         };
         for(var k in bars) {
-            bars[k].style.width = percentages[k] + '%';
-            bars[k].innerText = percentages[k] + '%';
+            if(bars[k]) {
+                bars[k].style.width = percentages[k] + '%';
+                bars[k].innerText = percentages[k] + '%';
+            }
         }
     }
     
@@ -177,9 +186,11 @@
     updateChart();
     
     var themeBtn = document.getElementById('themeToggleBtn');
-    themeBtn.addEventListener('click', function() {
-        document.body.classList.toggle('light-theme');
-    });
+    if(themeBtn) {
+        themeBtn.addEventListener('click', function() {
+            document.body.classList.toggle('light-theme');
+        });
+    }
     
     var bgInterval = null;
     var randomBgBtn = document.getElementById('randomBgBtn');
@@ -218,7 +229,11 @@
     var navMenu = document.querySelector('.nav-menu');
     if(menuToggle && navMenu) {
         menuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
+            if(navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            } else {
+                navMenu.classList.add('active');
+            }
         });
     }
     
